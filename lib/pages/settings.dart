@@ -10,11 +10,10 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  int count = 0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Text('$count'),
+    return Row(
+      children: [Text(widget.title)],
     );
   }
 }

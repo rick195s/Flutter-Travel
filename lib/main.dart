@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_hotel/ui/bottomNavigationBar.dart';
+import 'package:flutter_hotel/pages/settings.dart';
+import 'package:flutter_hotel/pages/home.dart';
+import 'package:flutter_hotel/ui/BottomNavigationBarIcons.dart';
 
 void main() {
   runApp(MyApp());
@@ -46,72 +48,20 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: bottomNavigationBar(context),
-      appBar: new AppBar(
-        title: new Text(widget.title),
-      ),
-      body: new Center(),
-    );
-  }
-
-  Widget bottomNavigationBar(BuildContext context) {
-    return Material(
-      shadowColor: Colors.blue,
-      elevation: 35,
-      borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(40), topRight: Radius.circular(40)),
-      color: Colors.white,
-      child: Container(
-        height: 85,
-        child: ListView.builder(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          itemCount: items.length,
-          itemBuilder: (context, i) => Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: GestureDetector(
-              onTap: () {
-                changeState(i);
-              },
-              child: AnimatedContainer(
-                duration: Duration(
-                  milliseconds: 250,
-                ),
-                width: 60,
-                curve: Curves.decelerate,
-                decoration: i == _currentIndex
-                    ? BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.blue.shade100,
-                              spreadRadius: 3,
-                              blurRadius: 10),
-                        ],
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        color: Colors.blue,
-                      )
-                    : BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(100)),
-                      ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: i == _currentIndex
-                      ? [
-                          Icon(items[i], size: 40, color: Colors.white),
-                          Text(
-                            "Home",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ]
-                      : [
-                          Icon(items[i], size: 30, color: Colors.grey),
-                        ],
-                ),
-              ),
-            ),
-          ),
-          scrollDirection: Axis.horizontal,
+        bottomNavigationBar: CustomBottomNavigationBar(
+          icons: bottomItems,
+          onTap: changeState,
+          currentIndex: _currentIndex,
         ),
-      ),
-    );
+        body: SafeArea(
+          child: _pages[_currentIndex],
+        ));
   }
 }
+
+List<Widget> _pages = <Widget>[
+  HomePage("Home"),
+  SettingsPage("2"),
+  SettingsPage("3"),
+  SettingsPage("4"),
+];
