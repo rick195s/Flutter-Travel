@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_hotel/pages/settings.dart';
-import 'package:flutter_hotel/pages/home.dart';
-import 'package:flutter_hotel/ui/custom_bottom_navigation_bar.dart';
+import 'package:flutter_travel/pages/settings.dart';
+import 'package:flutter_travel/pages/home.dart';
+import 'package:flutter_travel/ui/custom_bottom_navigation_bar.dart';
 import 'package:device_preview/device_preview.dart';
-import 'package:flutter_hotel/ui/theme_manager.dart';
+import 'package:flutter_travel/ui/theme_manager.dart';
 import 'package:provider/provider.dart';
 
 Future main() async {
@@ -17,6 +17,24 @@ Future main() async {
     ),
   );
 }
+
+ThemeData darkTheme = ThemeData(
+  scaffoldBackgroundColor: Color(0xff131312),
+  focusColor: Color(0xff087cf2).withAlpha(127),
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    backgroundColor: Color(0xff242428),
+  ),
+  shadowColor: Colors.blue.shade800,
+);
+
+ThemeData lightTheme = ThemeData(
+  scaffoldBackgroundColor: Colors.white,
+  focusColor: Color(0xff087cf2),
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    backgroundColor: Colors.white,
+  ),
+  shadowColor: Colors.blue.shade800,
+);
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -30,14 +48,14 @@ class MyApp extends StatelessWidget {
 
           return MaterialApp(
             builder: DevicePreview.appBuilder,
-            title: 'Flutter Hotel',
+            title: 'Flutter Travel',
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             debugShowCheckedModeBanner: false,
             themeMode: themeNotifier.themeMode,
-            theme: themeNotifier.lightTheme,
-            darkTheme: themeNotifier.darkTheme,
-            home: MyHomePage(title: 'Flutter Hotel'),
+            theme: lightTheme,
+            darkTheme: darkTheme,
+            home: MyHomePage(title: 'Flutter Travel'),
           );
         });
   }
@@ -81,6 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
 List<Widget> _pages = <Widget>[
   SettingsPage("2"),
   SettingsPage("3"),
+  SettingsPage("4"),
   SettingsPage("4"),
   HomePage("Home"),
 ];

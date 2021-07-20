@@ -1,6 +1,6 @@
-# flutter_hotel
+# Flutter Travel
 
-Flutter Hotel App Template
+Flutter Travel App Template
 
 ## Getting Started
 

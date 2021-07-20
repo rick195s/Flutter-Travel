@@ -39,37 +39,15 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       elevation: 15,
       borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-      color: Theme.of(context).bottomAppBarColor,
+      color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
       child: Container(
         alignment: Alignment.center,
-        height: 50,
+        height: 55,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Stack(
-              fit: StackFit.expand,
-              alignment: AlignmentDirectional.center,
-              children: [
-                // AnimatedPositioned(
-                //   left: widget.currentIndex * 100,
-                //   width:
-                //       MediaQuery.of(context).size.width / widget.icons.length,
-                //   height: 40,
-                //   duration: Duration(milliseconds: 2),
-                //   curve: Curves.decelerate,
-                //   child: AnimatedContainer(
-                //     duration: Duration(seconds: 1),
-                //     decoration: BoxDecoration(
-                //       borderRadius: BorderRadius.all(
-                //         Radius.circular(10),
-                //       ),
-                //       color: Colors.red,
-                //     ),
-                //   ),
-                // ),
-                Row(
-                  children: _createTiles(),
-                ),
-              ]),
+          child: Row(
+            children: _createTiles(),
+          ),
         ),
       ),
     );
@@ -99,6 +77,7 @@ class _CustomBottomNavigationItemState
   @override
   Widget build(BuildContext context) {
     return Expanded(
+      flex: widget.selected ? 2 : 1,
       child: InkResponse(
         splashColor: Colors.transparent,
         enableFeedback: false,
@@ -111,23 +90,24 @@ class _CustomBottomNavigationItemState
 
   Widget _customItem() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: AnimatedContainer(
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
+      child: Container(
         height: MediaQuery.of(context).size.height,
-        duration: Duration(milliseconds: 400),
-        decoration: widget.selected
-            ? BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10),
-                ),
-              )
-            : BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(20),
-                ),
-              ),
-        curve: Curves.ease,
+        decoration: BoxDecoration(
+          boxShadow: widget.selected
+              ? [
+                  BoxShadow(
+                    color: Theme.of(context).shadowColor,
+                    spreadRadius: 1,
+                    blurRadius: 3,
+                  ),
+                ]
+              : null,
+          color: widget.selected ? Theme.of(context).focusColor : null,
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
         child: _itemRow(),
       ),
     );
@@ -136,17 +116,30 @@ class _CustomBottomNavigationItemState
   Widget _itemRow() {
     return Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.max,
         children: [
-          Icon(
-            widget.item.icon,
-            color: widget.selected ? Colors.white : Colors.grey,
+          Flexible(
+            flex: 1,
+            child: Icon(
+              widget.item.icon,
+              color: widget.selected ? Colors.white : Colors.grey,
+            ),
           ),
-          AnimatedSize(
-            curve: Curves.decelerate,
-            duration: Duration(milliseconds: 200),
-            vsync: this,
-            child: Text(widget.selected ? widget.item.label : ""),
+          // Text(
+          //   widget.selected ? widget.item.label : "",
+          //   style: TextStyle(color: Colors.white),
+          // ),
+
+          Flexible(
+            flex: 4,
+            child: AnimatedSize(
+              duration: Duration(milliseconds: 125),
+              vsync: this,
+              child: Text(
+                widget.selected ? widget.item.label : "",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
           ),
         ]);
   }
@@ -165,5 +158,6 @@ const List<CustomBottomNavigationBarIcons> bottomItems =
   CustomBottomNavigationBarIcons(label: "Home", icon: Icons.home),
   CustomBottomNavigationBarIcons(label: "Map", icon: Icons.map),
   CustomBottomNavigationBarIcons(label: "Search", icon: Icons.search),
-  CustomBottomNavigationBarIcons(label: "Profile", icon: Icons.person_outline),
+  CustomBottomNavigationBarIcons(label: "Search", icon: Icons.search),
+  CustomBottomNavigationBarIcons(label: "Search", icon: Icons.search),
 ];
