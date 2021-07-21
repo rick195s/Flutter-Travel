@@ -1,28 +1,36 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_travel/pages/settings.dart';
-import 'package:flutter_travel/pages/home.dart';
-import 'package:flutter_travel/ui/custom_bottom_navigation_bar.dart';
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter_travel/ui/theme_manager.dart';
 import 'package:provider/provider.dart';
+import 'package:device_preview/device_preview.dart';
+import 'pages/settings.dart';
+import 'pages/home.dart';
+import 'ui/custom_bottom_navigation_bar.dart';
+import 'ui/theme_manager.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(
-    DevicePreview(
-      builder: (context) => MyApp(),
-    ),
+    // DevicePreview(
+    //   builder: (context) => MyApp(),
+    // ),
+
+    MyApp(),
   );
 }
 
 ThemeData darkTheme = ThemeData(
   scaffoldBackgroundColor: Color(0xff131312),
   focusColor: Color(0xff087cf2).withAlpha(127),
+  textTheme: TextTheme(
+    button: TextStyle(color: Colors.white),
+  ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     backgroundColor: Color(0xff242428),
+    unselectedIconTheme: IconThemeData(color: Colors.grey),
+    selectedIconTheme: IconThemeData(color: Colors.white),
+    selectedLabelStyle: TextStyle(color: Colors.white),
   ),
   shadowColor: Colors.blue.shade800,
 );
@@ -30,8 +38,14 @@ ThemeData darkTheme = ThemeData(
 ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   focusColor: Color(0xff087cf2),
+  textTheme: TextTheme(
+    button: TextStyle(color: Colors.white),
+  ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     backgroundColor: Colors.white,
+    unselectedIconTheme: IconThemeData(color: Colors.grey),
+    selectedIconTheme: IconThemeData(color: Colors.white),
+    selectedLabelStyle: TextStyle(color: Colors.white),
   ),
   shadowColor: Colors.blue.shade800,
 );
@@ -86,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         bottomNavigationBar: CustomBottomNavigationBar(
-          icons: bottomItems,
+          items: bottomItems,
           onTap: onBottomNavigationBarIconTap,
           currentIndex: _currentIndex,
         ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_travel/ui/theme_manager.dart';
+import '/ui/theme_manager.dart';
 
 class SettingsPage extends StatefulWidget {
   SettingsPage(this.title);
@@ -19,9 +19,8 @@ class _SettingsPageState extends State<SettingsPage> {
   // When the widget its loaded this function will be executed
   @override
   void initState() {
-    super.initState();
-
     themeProvider = Provider.of<ThemeNotifier>(context, listen: false);
+    super.initState();
   }
 
   // Disposing what was set
@@ -30,6 +29,7 @@ class _SettingsPageState extends State<SettingsPage> {
     super.dispose();
   }
 
+  // Changing and storing the current theme mode
   changeTheme(value) {
     setState(() {
       isOn = value;
