@@ -15,7 +15,6 @@ Future main() async {
     // DevicePreview(
     //   builder: (context) => MyApp(),
     // ),
-
     MyApp(),
   );
 }
@@ -99,6 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        extendBody: true,
         bottomNavigationBar: CustomBottomNavigationBar(
           items: bottomItems,
           onTap: onBottomNavigationBarIconTap,

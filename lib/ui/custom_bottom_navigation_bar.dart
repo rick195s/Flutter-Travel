@@ -15,6 +15,9 @@ class CustomBottomNavigationBar extends StatefulWidget {
   /// bottom navigation bar.
   final List<BottomNavigationBarItem> items;
 
+  /// Defines the background color of the [CustomBottomNavigationBar]
+  final Color? backgroundColor;
+
   /// Defines what [IconThemeData] will the Icon have when selected
   final IconThemeData? selectedIconTheme;
 
@@ -29,6 +32,7 @@ class CustomBottomNavigationBar extends StatefulWidget {
     required this.currentIndex,
     required this.onTap,
     required this.items,
+    this.backgroundColor,
     this.selectedIconTheme,
     this.unselectedIconTheme,
     this.textStyle,
@@ -58,8 +62,10 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
 
         /// Gives to the contrutor just the [IconThemeData] that will be used
         iconThemeData: i == widget.currentIndex
-            ? widget.selectedIconTheme
-            : widget.unselectedIconTheme,
+            ? widget.selectedIconTheme ??
+                Theme.of(context).bottomNavigationBarTheme.selectedIconTheme
+            : widget.unselectedIconTheme ??
+                Theme.of(context).bottomNavigationBarTheme.unselectedIconTheme,
         textStyle: widget.textStyle,
       ));
     }
@@ -69,26 +75,29 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-              color: Theme.of(context).shadowColor,
-              spreadRadius: 0.5,
-              blurRadius: 0.5),
-        ],
-        borderRadius:
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(color: Colors.grey, blurRadius: 2, offset: Offset(1, 1)),
+          ],
+          border: Border.all(color: Theme.of(context).shadowColor, width: 0.5),
+          borderRadius:
 
-            /// Radius of the [CustomBottomNavigationBar] top corners
-            BorderRadius.only(
-                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-        color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
-      ),
-      height: 60,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Row(
-          children: _createTiles(),
+              /// Radius of the [CustomBottomNavigationBar] top corners
+              BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20)),
+          color: widget.backgroundColor ??
+              Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+        ),
+        height: 60,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Row(
+            children: _createTiles(),
+          ),
         ),
       ),
     );
@@ -164,7 +173,7 @@ class _CustomBottomNavigationTileState
 
   Widget _customItem() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 8.0),
+      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 8),
       child:
 
           /// Creating a [Container] with decoration so the user
@@ -199,8 +208,15 @@ class _CustomBottomNavigationTileState
     /// are null then the icons will have [color: Theme.of(context).primaryColor]
 
     IconThemeData iconThemeData = widget.iconThemeData ??
-        Theme.of(context).bottomNavigationBarTheme.selectedIconTheme ??
         IconThemeData(color: Theme.of(context).primaryColor);
+
+    String text = "";
+
+    if (widget.selected) {
+      text = widget.item.label.toString();
+    } else if (MediaQuery.of(context).size.width > 600) {
+      text = widget.item.label.toString();
+    }
 
     return Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -225,7 +241,7 @@ class _CustomBottomNavigationTileState
               duration: Duration(milliseconds: 125),
               vsync: this,
               child: Text(
-                widget.selected ? widget.item.label.toString() : "",
+                text,
                 style: widget.textStyle ??
                     Theme.of(context)
                         .bottomNavigationBarTheme
