@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import '../services/storage_manager.dart';
+import 'package:flutter_travel/services/storage_manager.dart';
 
 class ThemeNotifier with ChangeNotifier {
-
   ThemeMode themeMode = ThemeMode.system;
 
   ThemeNotifier() {
@@ -11,7 +10,6 @@ class ThemeNotifier with ChangeNotifier {
 
     StorageManager.readData('themeMode').then((storedValue) {
       print('value read from storage: ' + storedValue.toString());
-
       if (storedValue == 'light') {
         print('setting light theme');
 
@@ -33,7 +31,9 @@ class ThemeNotifier with ChangeNotifier {
   }
 
   // Check if dark mode is enabled
-  bool isDarkModeOn() => themeMode == ThemeMode.dark;
+  bool isDarkModeOn() {
+    return themeMode == ThemeMode.dark;
+  }
 
   // Changes the state of dark mode (on or off)
   void setDarkMode(bool isOn) {

@@ -3,15 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:device_preview/device_preview.dart';
-import 'pages/settings.dart';
-import 'pages/home.dart';
-import 'ui/custom_bottom_navigation_bar.dart';
-import 'ui/theme_manager.dart';
-import 'ui/themes.dart';
+import 'package:flutter_travel/pages/settings.dart';
+import 'package:flutter_travel/pages/home.dart';
+import 'package:flutter_travel/ui/custom_bottom_navigation_bar.dart';
+import 'package:flutter_travel/ui/theme_manager.dart';
+import 'package:flutter_travel/ui/themes.dart';
 
-Future main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
+void main() {
   runApp(
     // DevicePreview(
     //   builder: (context) => MyApp(),

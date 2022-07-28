@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '/ui/theme_manager.dart';
+import 'package:flutter_travel/ui/theme_manager.dart';
 
 class SettingsPage extends StatefulWidget {
   SettingsPage(this.title);
