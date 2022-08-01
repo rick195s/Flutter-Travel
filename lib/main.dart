@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             debugShowCheckedModeBanner: false,
             themeMode: themeNotifier.themeMode,
+            locale: new Locale('pt'),
             theme: lightTheme,
             darkTheme: darkTheme,
             home: MyHomePage(title: 'Flutter Travel'),
@@ -84,5 +85,5 @@ List<Widget> _pages = <Widget>[
   new SettingsPage("3"),
   new SettingsPage("4"),
   new SettingsPage("4"),
-  new HomePage("Home"),
+  new HomePage(),
 ];
