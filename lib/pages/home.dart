@@ -13,7 +13,10 @@ class _HomePageState extends State<HomePage> {
       padding: EdgeInsets.only(top: 20),
       child: Container(
         alignment: Alignment.center,
-        child: Text(AppLocalizations.of(context)!.helloWorld),
+        child: Text(
+          AppLocalizations.of(context)!.helloWorld,
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
       ),
     );
   }

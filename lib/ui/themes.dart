@@ -5,6 +5,7 @@ ThemeData darkTheme = ThemeData(
   focusColor: Color(0xff087cf2).withAlpha(127),
   textTheme: TextTheme(
     button: TextStyle(color: Colors.white),
+    bodyText1: TextStyle(color: Colors.white),
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     backgroundColor: Color(0xff242428),
