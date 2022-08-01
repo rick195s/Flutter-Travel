@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_travel/ui/theme_manager.dart';
 
-const SET_SYSTEM_THEME = 3;
-
 class SettingsPage extends StatefulWidget {
   SettingsPage(this.title);
 
@@ -26,36 +24,35 @@ class _SettingsPageState extends State<SettingsPage> {
     super.initState();
   }
 
-  // Disposing what was set
+  // Actions done before disposing the widget
   @override
   void dispose() {
     super.dispose();
   }
 
-  // Changing and storing the current theme mode
-  changeTheme(value) {
-    if (value == SET_SYSTEM_THEME) {
-      themeProvider.setThemeModeSystem();
-    } else {
-      themeProvider.setDarkMode(value);
-    }
-
+  // Changes the theme switch state
+  changeThemeSwitch() {
     setState(() {
       isOn = themeProvider.isDarkModeOn();
     });
   }
 
+  // Changes and stores the current theme mode
+  changeTheme(value) {
+    themeProvider.setDarkMode(value);
+    changeThemeSwitch();
+  }
+
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      isOn = themeProvider.isDarkModeOn();
-    });
+    changeThemeSwitch();
 
     return Row(
       children: [
         ElevatedButton(
-          onPressed: () => {
-            changeTheme(SET_SYSTEM_THEME),
+          onPressed: () {
+            themeProvider.setThemeModeSystem();
+            changeThemeSwitch();
           },
           child: Text("butoa"),
         ),

@@ -80,9 +80,9 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 List<Widget> _pages = <Widget>[
-  SettingsPage("2"),
-  SettingsPage("3"),
-  SettingsPage("4"),
-  SettingsPage("4"),
-  HomePage("Home"),
+  new SettingsPage("2"),
+  new SettingsPage("3"),
+  new SettingsPage("4"),
+  new SettingsPage("4"),
+  new HomePage("Home"),
 ];
