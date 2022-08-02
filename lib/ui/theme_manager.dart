@@ -9,21 +9,18 @@ class ThemeNotifier with ChangeNotifier {
     // is waiting for the StorageManager object to read data from the disk
 
     StorageManager.readData('themeMode').then((storedValue) {
-      print('value read from storage: ' + storedValue.toString());
-      if (storedValue == 'light') {
-        print('setting light theme');
+      switch (storedValue) {
+        case 'light':
+          themeMode = ThemeMode.light;
+          break;
 
-        themeMode = ThemeMode.light;
-      } else if (storedValue == 'dark') {
-        print('setting dark theme');
+        case 'dark':
+          themeMode = ThemeMode.dark;
+          break;
 
-        themeMode = ThemeMode.dark;
-      } else {
-        print('setting system theme');
-
-        themeMode = ThemeMode.system;
+        default:
+          themeMode = ThemeMode.system;
       }
-
       // Notifies the listeners for the updated value
 
       notifyListeners();
@@ -31,21 +28,17 @@ class ThemeNotifier with ChangeNotifier {
   }
 
   // Check if dark mode is enabled
-  bool isDarkModeOn() {
-    return themeMode == ThemeMode.dark;
+  bool isDarkModeOn(BuildContext context) {
+    return Theme.of(context).brightness == Brightness.dark;
   }
 
   // Changes the state of dark mode (on or off)
   void setDarkMode(bool isOn) {
     if (isOn) {
-      print('saving dark mode');
-
       StorageManager.saveData('themeMode', 'dark');
 
       themeMode = ThemeMode.dark;
     } else {
-      print('saving light mode');
-
       StorageManager.saveData('themeMode', 'light');
 
       themeMode = ThemeMode.light;
@@ -59,8 +52,6 @@ class ThemeNotifier with ChangeNotifier {
     StorageManager.saveData('themeMode', 'system');
 
     themeMode = ThemeMode.system;
-
-    print('saving system');
 
     notifyListeners();
   }

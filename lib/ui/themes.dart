@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 ThemeData darkTheme = ThemeData(
+  brightness: Brightness.dark,
   scaffoldBackgroundColor: Color(0xff131312),
   focusColor: Color(0xff087cf2).withAlpha(127),
   textTheme: TextTheme(
@@ -17,6 +18,7 @@ ThemeData darkTheme = ThemeData(
 );
 
 ThemeData lightTheme = ThemeData(
+  brightness: Brightness.light,
   scaffoldBackgroundColor: Colors.white,
   focusColor: Color(0xff087cf2),
   textTheme: TextTheme(

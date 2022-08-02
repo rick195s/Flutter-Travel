@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_travel/ui/theme_manager.dart';
@@ -33,7 +31,7 @@ class _SettingsPageState extends State<SettingsPage> {
   // Changes the theme switch state
   changeThemeSwitch() {
     setState(() {
-      isOn = themeProvider.isDarkModeOn();
+      isOn = themeProvider.isDarkModeOn(context);
     });
   }
 
