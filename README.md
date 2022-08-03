@@ -2,11 +2,15 @@
 
 Flutter Travel is an App Template created using flutter framework with firebase integration, translation options, dark and light theme, rtl or ltr text direction to start booking your trips in only one place.
 
+## Tips:
+
+To help with firebase configurations install firebase CLI.
+
 ## Usage/Examples
 
 #### CustomBottomNavigationBar
 
--   You can customize the **CustomBottomNavigationBar**
+- You can customize the **CustomBottomNavigationBar**
 
 Change Icon Themes for selected and unselected Icons.
 
@@ -24,12 +28,12 @@ Using ThemeData:
 
 ```dart
 ThemeData(
-	bottomNavigationBarTheme:  BottomNavigationBarThemeData(
-		backgroundColor:  Color(0xff242428),
-		unselectedIconTheme:  IconThemeData(color:  Colors.grey),
-		selectedIconTheme:  IconThemeData(color:  Colors.white),
-		selectedLabelStyle:  TextStyle(color:  Colors.white),
-	),
+    bottomNavigationBarTheme:  BottomNavigationBarThemeData(
+        backgroundColor:  Color(0xff242428),
+        unselectedIconTheme:  IconThemeData(color:  Colors.grey),
+        selectedIconTheme:  IconThemeData(color:  Colors.white),
+        selectedLabelStyle:  TextStyle(color:  Colors.white),
+    ),
 );
 ```
 
@@ -64,17 +68,17 @@ Example:
 
 ```dart
 CustomBottomNavigationBar(
-	items: bottomItems,
-	onTap: onBottomNavigationBarIconTap,
-	currentIndex: _currentIndex,
-	textStyle:  TextStyle(color:Colors.grey),
-	selectedIconTheme:  IconThemeData(color:  Colors.blue),
-	unselectedIconTheme:  IconThemeData(color:  Colors.grey),
-	backgroundColor:Colors.black38,
+    items: bottomItems,
+    onTap: onBottomNavigationBarIconTap,
+    currentIndex: _currentIndex,
+    textStyle:  TextStyle(color:Colors.grey),
+    selectedIconTheme:  IconThemeData(color:  Colors.blue),
+    unselectedIconTheme:  IconThemeData(color:  Colors.grey),
+    backgroundColor:Colors.black38,
 
 ),
 ```
 
 ## Authors
 
--   [@rick195s](https://www.github.com/rick195s)
+- [@rick195s](https://www.github.com/rick195s)

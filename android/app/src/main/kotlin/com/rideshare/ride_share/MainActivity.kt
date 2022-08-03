@@ -1,4 +1,4 @@
-package com.rideshare.flutter_travel
+package com.flutter_travel
 
 import io.flutter.embedding.android.FlutterActivity
 

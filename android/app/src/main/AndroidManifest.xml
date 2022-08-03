@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.rideshare.flutter_travel">
+    package="com.flutter_travel">
    <application
         android:label="flutter_travel"
         android:name="${applicationName}"
