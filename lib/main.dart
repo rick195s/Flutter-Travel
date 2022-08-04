@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_travel/pages/auth/login.dart';
 import 'package:provider/provider.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter_travel/pages/settings.dart';
@@ -55,28 +56,31 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   // current index of the bottom navigation bar
-  int _currentIndex = 0;
+  int _currentPageIndex = 0;
 
   // change the state of the current index to 'index'
   // so the view can be changed
   void onBottomNavigationBarIconTap(int index) {
     setState(() {
-      _currentIndex = index;
+      _currentPageIndex = index;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        extendBody: true,
-        bottomNavigationBar: CustomBottomNavigationBar(
-          items: bottomItems,
-          onTap: onBottomNavigationBarIconTap,
-          currentIndex: _currentIndex,
-        ),
-        body: Center(
-          child: _pages[_currentIndex],
-        ));
+      body: LoginPage(),
+    );
+    // return Scaffold(
+    //     extendBody: true,
+    //     bottomNavigationBar: CustomBottomNavigationBar(
+    //       items: bottomItems,
+    //       onTap: onBottomNavigationBarIconTap,
+    //       currentIndex: _currentPageIndex,
+    //     ),
+    //     body: Center(
+    //       child: _pages[_currentPageIndex],
+    //     ));
   }
 }
 
