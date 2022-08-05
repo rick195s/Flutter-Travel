@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_travel/pages/auth/login.dart';
+import 'package:flutter_travel/screens/auth/login.dart';
 import 'package:provider/provider.dart';
 import 'package:device_preview/device_preview.dart';
-import 'package:flutter_travel/pages/settings.dart';
-import 'package:flutter_travel/pages/home.dart';
-import 'package:flutter_travel/ui/custom_bottom_navigation_bar.dart';
-import 'package:flutter_travel/ui/theme_manager.dart';
-import 'package:flutter_travel/ui/themes.dart';
+import 'package:flutter_travel/screens/settings.dart';
+import 'package:flutter_travel/screens/home.dart';
+import 'package:flutter_travel/components/custom_bottom_navigation_bar.dart';
+import 'package:flutter_travel/theme/theme_manager.dart';
+import 'package:flutter_travel/theme/themes.dart';
 import 'package:sizing/sizing_builder.dart';
 
 void main() {
