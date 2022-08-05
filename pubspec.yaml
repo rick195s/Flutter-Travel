@@ -39,7 +39,7 @@ dependencies:
     firebase_analytics: ^9.3.0
     sizing: ^1.1.1
     line_icons: ^2.0.1
-    flare_flutter: ^3.0.2
+    rive: ^0.9.1
 
 dev_dependencies:
     flutter_test:

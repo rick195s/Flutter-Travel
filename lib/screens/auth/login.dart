@@ -1,4 +1,3 @@
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_travel/components/auth_selectable_text.dart';
 import 'package:flutter_travel/components/text_fields.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:sizing/sizing.dart';
+import 'package:rive/rive.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -21,14 +21,15 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Stack(children: <Widget>[
-      Container(
-        height: 100.sh,
-        width: 100.sw,
-        child: FlareActor(
-          'lib/assets/login_background.flr',
-          fit: BoxFit.fill,
-          animation: 'Flow',
-        ),
+      RiveAnimation.asset(
+        'lib/assets/login_background.riv',
+        fit: BoxFit.fill,
+        controllers: [
+          OneShotAnimation(
+            'Flow',
+            autoplay: true,
+          ),
+        ],
       ),
       Center(
         child: Column(
