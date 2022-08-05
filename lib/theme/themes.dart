@@ -8,6 +8,7 @@ ThemeData lightTheme = ThemeData(
   textTheme: TextTheme(
     headlineLarge: TextStyle(color: Colors.black),
     labelMedium: TextStyle(color: Colors.white),
+    headlineMedium: TextStyle(color: Color(0xff087cf2)),
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     backgroundColor: Colors.white,
@@ -26,6 +27,7 @@ ThemeData darkTheme = ThemeData(
   textTheme: TextTheme(
     headlineLarge: TextStyle(color: Colors.white),
     labelMedium: TextStyle(color: Colors.white),
+    headlineMedium: TextStyle(color: Color(0xff087cf2)),
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     backgroundColor: Color(0xff242428),

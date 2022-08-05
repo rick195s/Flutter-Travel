@@ -1,6 +1,9 @@
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_travel/components/auth_selectable_text.dart';
+import 'package:flutter_travel/components/text_fields.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:sizing/sizing.dart';
 
@@ -17,16 +20,28 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Center(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 50),
+        child: Stack(children: <Widget>[
+      Container(
+        height: 100.sh,
+        width: 100.sw,
+        child: FlareActor(
+          'lib/assets/login_background.flr',
+          fit: BoxFit.fill,
+          animation: 'Flow',
+        ),
+      ),
+      Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(AppLocalizations.of(context)!.welcomeTo),
-            Text("Flutter Travel",
-                style: Theme.of(context).textTheme.headlineLarge),
+            Flexible(child: Text(AppLocalizations.of(context)!.welcomeTo)),
+            Flexible(
+              flex: 2,
+              child: Text("Flutter Travel",
+                  style: Theme.of(context).textTheme.headlineLarge),
+            ),
             Container(
-              margin: const EdgeInsets.only(top: 50),
+              margin: const EdgeInsets.only(top: 20),
               padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
               width: 275.ss,
               decoration: BoxDecoration(
@@ -43,51 +58,45 @@ class _LoginPageState extends State<LoginPage> {
               ),
               child: Column(
                 children: <Widget>[
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: AppLocalizations.of(context)!.email,
-                      labelStyle: Theme.of(context).textTheme.labelMedium,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(
-                          color: Color(0xff087CF2),
-                        ),
-                      ),
-                    ),
+                  TextFieldEmail(context),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: TextFieldPassword(context, onPressed: () {
+                      setState(() {
+                        _showPassword = !_showPassword;
+                      });
+                    }, showPassword: _showPassword),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
-                    child: TextField(
-                      obscureText: !_showPassword,
-                      decoration: InputDecoration(
-                        labelText: AppLocalizations.of(context)!.password,
-                        labelStyle: Theme.of(context).textTheme.labelMedium,
-                        suffixIcon: IconButton(
-                          icon: _showPassword
-                              ? Icon(LineIcons.eye)
-                              : Icon(LineIcons.eyeSlash),
-                          onPressed: (() {
-                            setState(() {
-                              _showPassword = !_showPassword;
-                            });
-                          }),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(
-                            color: Color(0xff087CF2),
-                          ),
-                        ),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: SelectableText(
+                        "Forgot password?",
                       ),
                     ),
                   ),
-                  SelectableText("data"),
                 ],
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text(AppLocalizations.of(context)!.login),
+              ),
+            ),
+            AuthSelectableText.rich(
+              context,
+              firstText: AppLocalizations.of(context)!.signUpMessage,
+              lastText: AppLocalizations.of(context)!.signUp,
+              onTap: () {
+                print("data");
+              },
             ),
           ],
         ),
       ),
-    ));
+    ]));
   }
 }

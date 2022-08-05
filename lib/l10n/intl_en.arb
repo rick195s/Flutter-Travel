@@ -5,5 +5,12 @@
     },
     "welcomeTo":"Wecolme To",
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+
+    "signUpMessage": "If you don't have an account, you can ",
+    "signUp": "sign-up!",
+
+    "login": "Login"
+
+    
   }
