@@ -8,10 +8,10 @@ class AuthSelectableText extends SelectableText {
             TextSpan(
               children: <TextSpan>[
                 TextSpan(
-                  text: AppLocalizations.of(context)!.signUpMessage,
+                  text: firstText,
                 ),
                 TextSpan(
-                  text: AppLocalizations.of(context)!.signUp,
+                  text: lastText,
                   style: TextStyle(
                     color: Theme.of(context).textTheme.headlineMedium!.color,
                     fontWeight: FontWeight.bold,
@@ -19,5 +19,6 @@ class AuthSelectableText extends SelectableText {
                 ),
               ],
             ),
-            onTap: onTap);
+            onTap: onTap,
+            enableInteractiveSelection: false);
 }

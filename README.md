@@ -10,6 +10,8 @@ Flutter Travel is an App Template created using flutter framework with firebase 
 
 - flare_flutter; Background effects (Has warnings!!!!!)
 
+- animations; 
+
 ## Tips:
 
 To help with firebase configurations install firebase CLI.

@@ -17,6 +17,7 @@ ThemeData lightTheme = ThemeData(
     selectedLabelStyle: TextStyle(color: Colors.white),
   ),
   shadowColor: Colors.blue.shade800,
+  canvasColor: Colors.transparent,
 );
 
 // ------------------------------------------------------------ DARK THEME  ------------------------------------------------------------
@@ -36,4 +37,5 @@ ThemeData darkTheme = ThemeData(
     selectedLabelStyle: TextStyle(color: Colors.white),
   ),
   shadowColor: Colors.blue.shade800,
+  canvasColor: Colors.transparent,
 );

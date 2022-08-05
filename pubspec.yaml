@@ -40,6 +40,7 @@ dependencies:
     sizing: ^1.1.1
     line_icons: ^2.0.1
     rive: ^0.9.1
+    animations: ^2.0.3
 
 dev_dependencies:
     flutter_test:

@@ -1,11 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_travel/components/auth_selectable_text.dart';
-import 'package:flutter_travel/components/text_fields.dart';
 import 'package:flutter_travel/screens/auth/login.dart';
-import 'package:line_icons/line_icons.dart';
-import 'package:sizing/sizing.dart';
 import 'package:rive/rive.dart';
 
 class AuthPage extends StatefulWidget {
@@ -16,7 +12,17 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  bool _showPassword = false;
+  late Widget _currentWidget;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentWidget = LoginPage(onPressedSignUp: () {
+      setState(() {
+        _currentWidget = Text("dqwdwqqd");
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +48,16 @@ class _AuthPageState extends State<AuthPage> {
               child: Text("Flutter Travel",
                   style: Theme.of(context).textTheme.headlineLarge),
             ),
-            LoginPage(),
+            PageTransitionSwitcher(
+                reverse: true,
+                duration: const Duration(milliseconds: 1000),
+                child: _currentWidget,
+                transitionBuilder: (child, animation, secondaryAnimation) =>
+                    SharedAxisTransition(
+                        child: child,
+                        animation: animation,
+                        secondaryAnimation: secondaryAnimation,
+                        transitionType: SharedAxisTransitionType.horizontal)),
           ],
         ),
       ),

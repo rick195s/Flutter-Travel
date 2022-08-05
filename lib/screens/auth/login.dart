@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_travel/components/auth_selectable_text.dart';
 import 'package:flutter_travel/components/text_fields.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:sizing/sizing.dart';
-import 'package:rive/rive.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({Key? key, this.onPressedSignUp}) : super(key: key);
+
+  final void Function()? onPressedSignUp;
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -73,9 +72,7 @@ class _LoginPageState extends State<LoginPage> {
             context,
             firstText: AppLocalizations.of(context)!.signUpMessage,
             lastText: AppLocalizations.of(context)!.signUp,
-            onTap: () {
-              print("data");
-            },
+            onTap: widget.onPressedSignUp,
           ),
         ]);
   }
