@@ -19,85 +19,64 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Stack(children: <Widget>[
-      RiveAnimation.asset(
-        'lib/assets/login_background.riv',
-        fit: BoxFit.fill,
-        controllers: [
-          OneShotAnimation(
-            'Flow',
-            autoplay: true,
-          ),
-        ],
-      ),
-      Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Flexible(child: Text(AppLocalizations.of(context)!.welcomeTo)),
-            Flexible(
-              flex: 2,
-              child: Text("Flutter Travel",
-                  style: Theme.of(context).textTheme.headlineLarge),
+    return Wrap(
+        direction: Axis.vertical,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 20),
+            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+            width: 275.ss,
+            decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(20),
+              color: Color(0xff023E7D),
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  offset: Offset(0, 4),
+                  color: Color.fromRGBO(0, 0, 0, 0.5),
+                ),
+              ],
             ),
-            Container(
-              margin: const EdgeInsets.only(top: 20),
-              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-              width: 275.ss,
-              decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(20),
-                color: Color(0xff023E7D),
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 4,
-                    offset: Offset(0, 4),
-                    color: Color.fromRGBO(0, 0, 0, 0.5),
-                  ),
-                ],
-              ),
-              child: Column(
-                children: <Widget>[
-                  TextFieldEmail(context),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: TextFieldPassword(context, onPressed: () {
-                      setState(() {
-                        _showPassword = !_showPassword;
-                      });
-                    }, showPassword: _showPassword),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: SelectableText(
-                        "Forgot password?",
-                      ),
+            child: Column(
+              children: <Widget>[
+                TextFieldEmail(context),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: TextFieldPassword(context, onPressed: () {
+                    setState(() {
+                      _showPassword = !_showPassword;
+                    });
+                  }, showPassword: _showPassword),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: SelectableText(
+                      "Forgot password?",
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Text(AppLocalizations.of(context)!.login),
-              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Text(AppLocalizations.of(context)!.login),
             ),
-            AuthSelectableText.rich(
-              context,
-              firstText: AppLocalizations.of(context)!.signUpMessage,
-              lastText: AppLocalizations.of(context)!.signUp,
-              onTap: () {
-                print("data");
-              },
-            ),
-          ],
-        ),
-      ),
-    ]));
+          ),
+          AuthSelectableText.rich(
+            context,
+            firstText: AppLocalizations.of(context)!.signUpMessage,
+            lastText: AppLocalizations.of(context)!.signUp,
+            onTap: () {
+              print("data");
+            },
+          ),
+        ]);
   }
 }
