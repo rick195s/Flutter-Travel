@@ -21,7 +21,7 @@ ThemeData lightTheme = ThemeData(
 // ------------------------------------------------------------ DARK THEME  ------------------------------------------------------------
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
-  scaffoldBackgroundColor: Color(0xff131312),
+  scaffoldBackgroundColor: Color(0xff023E7D),
   focusColor: Color(0xff087cf2).withAlpha(127),
   textTheme: TextTheme(
     headlineLarge: TextStyle(color: Colors.white),

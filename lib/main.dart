@@ -9,13 +9,14 @@ import 'package:flutter_travel/pages/home.dart';
 import 'package:flutter_travel/ui/custom_bottom_navigation_bar.dart';
 import 'package:flutter_travel/ui/theme_manager.dart';
 import 'package:flutter_travel/ui/themes.dart';
+import 'package:sizing/sizing_builder.dart';
 
 void main() {
   runApp(
-    // DevicePreview(
-    //   builder: (context) => MyApp(),
-    // ),
-    MyApp(),
+    DevicePreview(
+      builder: (context) => MyApp(),
+    ),
+    // MyApp(),
   );
 }
 
@@ -29,18 +30,20 @@ class MyApp extends StatelessWidget {
         builder: (context, _) {
           final themeNotifier = Provider.of<ThemeNotifier>(context);
 
-          return MaterialApp(
-            builder: DevicePreview.appBuilder,
-            title: 'Flutter Travel',
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
-            debugShowCheckedModeBanner: false,
-            themeMode: themeNotifier.themeMode,
-            locale: new Locale('pt'),
-            theme: lightTheme,
-            darkTheme: darkTheme,
-            home: MyHomePage(title: 'Flutter Travel'),
-          );
+          return SizingBuilder(
+              builder: () => MaterialApp(
+                    builder: DevicePreview.appBuilder,
+                    title: 'Flutter Travel',
+                    localizationsDelegates:
+                        AppLocalizations.localizationsDelegates,
+                    supportedLocales: AppLocalizations.supportedLocales,
+                    debugShowCheckedModeBanner: false,
+                    themeMode: themeNotifier.themeMode,
+                    locale: new Locale('pt'),
+                    theme: lightTheme,
+                    darkTheme: darkTheme,
+                    home: MyHomePage(title: 'Flutter Travel'),
+                  ));
         });
   }
 }

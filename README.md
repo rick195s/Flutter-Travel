@@ -2,6 +2,12 @@
 
 Flutter Travel is an App Template created using flutter framework with firebase integration, translation options, dark and light theme, rtl or ltr text direction to start booking your trips in only one place.
 
+## Packages:
+
+- flutter_screenutil; Relative scalling
+
+- line_icons; Icons
+
 ## Tips:
 
 To help with firebase configurations install firebase CLI.

@@ -3,5 +3,7 @@
     "@helloWorld": {
       "description": "The conventional newborn programmer greeting"
     },
-    "welcomeTo":"Wecolme To"
+    "welcomeTo":"Wecolme To",
+    "email": "Email",
+    "password": "Password"
   }
