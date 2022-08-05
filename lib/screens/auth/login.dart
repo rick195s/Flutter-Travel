@@ -5,9 +5,9 @@ import 'package:flutter_travel/components/text_fields.dart';
 import 'package:sizing/sizing.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key, this.onPressedSignUp}) : super(key: key);
+  const LoginPage({Key? key, this.onPressedRegister}) : super(key: key);
 
-  final void Function()? onPressedSignUp;
+  final void Function()? onPressedRegister;
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -70,9 +70,9 @@ class _LoginPageState extends State<LoginPage> {
           ),
           AuthSelectableText.rich(
             context,
-            firstText: AppLocalizations.of(context)!.signUpMessage,
-            lastText: AppLocalizations.of(context)!.signUp,
-            onTap: widget.onPressedSignUp,
+            firstText: AppLocalizations.of(context)!.registerMessage,
+            lastText: AppLocalizations.of(context)!.register,
+            onTap: widget.onPressedRegister,
           ),
         ]);
   }

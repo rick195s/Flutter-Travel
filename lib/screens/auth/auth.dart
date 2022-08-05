@@ -17,7 +17,7 @@ class _AuthPageState extends State<AuthPage> {
   @override
   void initState() {
     super.initState();
-    _currentWidget = LoginPage(onPressedSignUp: () {
+    _currentWidget = LoginPage(onPressedRegister: () {
       setState(() {
         _currentWidget = Text("dqwdwqqd");
       });
