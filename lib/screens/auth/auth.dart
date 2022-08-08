@@ -62,7 +62,7 @@ class _AuthPageState extends State<AuthPage> {
             ),
             PageTransitionSwitcher(
                 reverse: true,
-                duration: const Duration(milliseconds: 1000),
+                duration: const Duration(milliseconds: 750),
                 child: _currentWidget,
                 transitionBuilder: (child, animation, secondaryAnimation) =>
                     SharedAxisTransition(

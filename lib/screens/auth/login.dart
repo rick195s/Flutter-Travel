@@ -17,6 +17,23 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool _showPassword = false;
 
+  late final TextEditingController _emailController;
+  late final TextEditingController _passwordController;
+
+  @override
+  void initState() {
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -40,6 +57,8 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             children: <Widget>[
               EmailPassword(
+                emailController: _emailController,
+                passwordController: _passwordController,
                 onPressed: () {
                   setState(() {
                     _showPassword = !_showPassword;
@@ -62,7 +81,9 @@ class _LoginPageState extends State<LoginPage> {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              print(_emailController.text);
+            },
             child: Text(AppLocalizations.of(context)!.loginBtn),
           ),
         ),

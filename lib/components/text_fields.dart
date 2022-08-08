@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:line_icons/line_icons.dart';
 
-class TextFieldEmail extends TextField {
-  TextFieldEmail(BuildContext context)
+class TextFieldEmail extends TextFormField {
+  TextFieldEmail(BuildContext context, {TextEditingController? controller})
       : super(
+          controller: controller,
           decoration: InputDecoration(
             labelText: AppLocalizations.of(context)!.email,
             labelStyle: Theme.of(context).textTheme.labelMedium,
@@ -18,10 +19,14 @@ class TextFieldEmail extends TextField {
         );
 }
 
-class TextFieldPassword extends TextField {
+class TextFieldPassword extends TextFormField {
   TextFieldPassword(BuildContext context,
-      {VoidCallback? onPressed, bool showPassword = false, String? labelText})
+      {TextEditingController? controller,
+      VoidCallback? onPressed,
+      bool showPassword = false,
+      String? labelText})
       : super(
+          controller: controller,
           obscureText: !showPassword,
           decoration: InputDecoration(
             labelText: labelText ?? AppLocalizations.of(context)!.password,
