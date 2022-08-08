@@ -1,4 +1,20 @@
 {
-  "helloWorld": "Ola Mundo!",
-  "welcomeTo": "Bem-vindo a"
+  "helloWorld": "Olá mundo!",
+
+  "welcomeTo":"Bem vindo a",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirmação da Password",
+
+  "forgotPassword": "Esqueceu-se da Password?",
+
+  "registerMessage": "Se não tiver uma conta, pode-se ",
+  "register": "registar!",
+  "registerBtn": "Registar",
+
+  "loginMessage": "Se já tiver uma conta, pode fazer ",
+  "login": "login!",
+  "loginBtn": "Login"
+
+  
 }
