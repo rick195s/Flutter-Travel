@@ -2,6 +2,7 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_travel/screens/auth/login.dart';
+import 'package:flutter_travel/screens/auth/register.dart';
 import 'package:rive/rive.dart';
 
 class AuthPage extends StatefulWidget {
@@ -13,15 +14,26 @@ class AuthPage extends StatefulWidget {
 
 class _AuthPageState extends State<AuthPage> {
   late Widget _currentWidget;
+  late LoginPage loginPage;
+  late RegisterPage registerPage;
 
   @override
   void initState() {
     super.initState();
-    _currentWidget = LoginPage(onPressedRegister: () {
-      setState(() {
-        _currentWidget = Text("dqwdwqqd");
-      });
-    });
+
+    loginPage = new LoginPage(
+      onPressedRegister: () => setState(() {
+        _currentWidget = registerPage;
+      }),
+    );
+
+    registerPage = new RegisterPage(
+      onPressedRegister: () => setState(() {
+        _currentWidget = loginPage;
+      }),
+    );
+
+    _currentWidget = loginPage;
   }
 
   @override

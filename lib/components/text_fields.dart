@@ -20,11 +20,11 @@ class TextFieldEmail extends TextField {
 
 class TextFieldPassword extends TextField {
   TextFieldPassword(BuildContext context,
-      {VoidCallback? onPressed, showPassword = false})
+      {VoidCallback? onPressed, bool showPassword = false, String? labelText})
       : super(
           obscureText: !showPassword,
           decoration: InputDecoration(
-            labelText: AppLocalizations.of(context)!.password,
+            labelText: labelText ?? AppLocalizations.of(context)!.password,
             labelStyle: Theme.of(context).textTheme.labelMedium,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),

@@ -6,11 +6,17 @@
     "welcomeTo":"Wecolme To",
     "email": "Email",
     "password": "Password",
+    "confirmPassword": "Confirm Password",
+
+    "forgotPassword": "Forgot Password?",
 
     "registerMessage": "If you don't have an account, you can ",
     "register": "register!",
+    "registerBtn": "Register",
 
-    "login": "Login"
+    "loginMessage": "If you already an account, you can ",
+    "login": "login!",
+    "loginBtn": "Login"
 
     
   }

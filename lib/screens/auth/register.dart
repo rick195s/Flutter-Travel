@@ -5,17 +5,18 @@ import 'package:flutter_travel/components/email_password.dart';
 import 'package:flutter_travel/components/text_fields.dart';
 import 'package:sizing/sizing.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key, this.onPressedRegister}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key, this.onPressedRegister}) : super(key: key);
 
   final void Function()? onPressedRegister;
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   bool _showPassword = false;
+  bool _showConfirmPassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +50,15 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 15),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: SelectableText(
-                    AppLocalizations.of(context)!.forgotPassword,
-                  ),
+                child: TextFieldPassword(
+                  context,
+                  onPressed: () {
+                    setState(() {
+                      _showConfirmPassword = !_showConfirmPassword;
+                    });
+                  },
+                  showPassword: _showConfirmPassword,
+                  labelText: AppLocalizations.of(context)!.confirmPassword,
                 ),
               ),
             ],
@@ -63,13 +68,13 @@ class _LoginPageState extends State<LoginPage> {
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: ElevatedButton(
             onPressed: () {},
-            child: Text(AppLocalizations.of(context)!.loginBtn),
+            child: Text(AppLocalizations.of(context)!.registerBtn),
           ),
         ),
         AuthSelectableText.rich(
           context,
-          firstText: AppLocalizations.of(context)!.registerMessage,
-          lastText: AppLocalizations.of(context)!.register,
+          firstText: AppLocalizations.of(context)!.loginMessage,
+          lastText: AppLocalizations.of(context)!.login,
           onTap: widget.onPressedRegister,
         ),
       ],

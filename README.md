@@ -8,7 +8,7 @@ Flutter Travel is an App Template created using flutter framework with firebase 
 
 - line_icons; Icons
 
-- flare_flutter; Background effects (Has warnings!!!!!)
+- rive; Background effects 
 
 - animations; 
 
