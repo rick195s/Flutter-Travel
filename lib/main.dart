@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
                     debugShowCheckedModeBanner: false,
                     themeMode: themeNotifier.themeMode,
                     locale: new Locale('pt'),
-                    theme: lightTheme,
+                    theme: darkTheme,
                     darkTheme: darkTheme,
                     home: MyHomePage(title: 'Flutter Travel'),
                   ));

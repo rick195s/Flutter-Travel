@@ -50,7 +50,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 15),
-                child: TextFieldPassword(
+                child: TextFormFieldPassword(
                   context,
                   onPressed: () {
                     setState(() {

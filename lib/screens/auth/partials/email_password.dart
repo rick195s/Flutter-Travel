@@ -19,10 +19,10 @@ class EmailPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextFieldEmail(context, controller: emailController),
+        TextFormFieldEmail(context, controller: emailController),
         Padding(
           padding: const EdgeInsets.only(top: 15),
-          child: TextFieldPassword(context,
+          child: TextFormFieldPassword(context,
               controller: passwordController,
               onPressed: onPressed,
               showPassword: showPassword),

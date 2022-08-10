@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:line_icons/line_icons.dart';
 
-class TextFieldEmail extends TextFormField {
-  TextFieldEmail(BuildContext context, {TextEditingController? controller})
+class TextFormFieldEmail extends TextFormField {
+  TextFormFieldEmail(BuildContext context, {TextEditingController? controller})
       : super(
           controller: controller,
           decoration: InputDecoration(
@@ -19,8 +19,8 @@ class TextFieldEmail extends TextFormField {
         );
 }
 
-class TextFieldPassword extends TextFormField {
-  TextFieldPassword(BuildContext context,
+class TextFormFieldPassword extends TextFormField {
+  TextFormFieldPassword(BuildContext context,
       {TextEditingController? controller,
       VoidCallback? onPressed,
       bool showPassword = false,
