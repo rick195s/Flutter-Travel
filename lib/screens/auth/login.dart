@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_travel/components/auth_selectable_text.dart';
-import 'package:flutter_travel/components/email_password.dart';
+import 'package:flutter_travel/screens/auth/partials/email_password.dart';
 import 'package:flutter_travel/components/text_fields.dart';
 import 'package:sizing/sizing.dart';
 
