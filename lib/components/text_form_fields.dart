@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:line_icons/line_icons.dart';
 
+/// [Controllers] are passed via arguments because if we used the [context] the 'confirm password' textfield would be sync with the 'password' textfield.
+/// The [context] is used just for style purposes.
+
 class TextFormFieldEmail extends TextFormField {
   TextFormFieldEmail(BuildContext context, {TextEditingController? controller})
       : super(
@@ -22,7 +25,7 @@ class TextFormFieldEmail extends TextFormField {
 class TextFormFieldPassword extends TextFormField {
   TextFormFieldPassword(BuildContext context,
       {TextEditingController? controller,
-      VoidCallback? onPressed,
+      void Function()? onPressed,
       bool showPassword = false,
       String? labelText})
       : super(

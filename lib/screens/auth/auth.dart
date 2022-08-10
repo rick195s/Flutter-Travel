@@ -2,6 +2,7 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_travel/screens/auth/login.dart';
+import 'package:flutter_travel/screens/auth/partials/email_password.dart';
 import 'package:flutter_travel/screens/auth/register.dart';
 import 'package:rive/rive.dart';
 
@@ -17,9 +18,13 @@ class _AuthPageState extends State<AuthPage> {
   late LoginPage loginPage;
   late RegisterPage registerPage;
 
+  late final TextEditingController _emailController;
+  late final TextEditingController _passwordController;
+
   @override
   void initState() {
-    super.initState();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
 
     loginPage = new LoginPage(
       onPressedRegister: () => setState(() {
@@ -34,6 +39,14 @@ class _AuthPageState extends State<AuthPage> {
     );
 
     _currentWidget = loginPage;
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 
   @override
@@ -60,16 +73,20 @@ class _AuthPageState extends State<AuthPage> {
               child: Text("Flutter Travel",
                   style: Theme.of(context).textTheme.headlineLarge),
             ),
-            PageTransitionSwitcher(
-                reverse: true,
-                duration: const Duration(milliseconds: 750),
-                child: _currentWidget,
-                transitionBuilder: (child, animation, secondaryAnimation) =>
-                    SharedAxisTransition(
-                        child: child,
-                        animation: animation,
-                        secondaryAnimation: secondaryAnimation,
-                        transitionType: SharedAxisTransitionType.horizontal)),
+            EmailPasswordControllers(
+              emailController: _emailController,
+              passwordController: _passwordController,
+              child: PageTransitionSwitcher(
+                  reverse: true,
+                  duration: const Duration(milliseconds: 750),
+                  child: _currentWidget,
+                  transitionBuilder: (child, animation, secondaryAnimation) =>
+                      SharedAxisTransition(
+                          child: child,
+                          animation: animation,
+                          secondaryAnimation: secondaryAnimation,
+                          transitionType: SharedAxisTransitionType.horizontal)),
+            ),
           ],
         ),
       ),

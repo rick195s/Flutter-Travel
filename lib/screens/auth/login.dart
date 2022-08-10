@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_travel/components/auth_selectable_text.dart';
 import 'package:flutter_travel/screens/auth/partials/email_password.dart';
-import 'package:flutter_travel/components/text_fields.dart';
+import 'package:flutter_travel/components/text_form_fields.dart';
 import 'package:sizing/sizing.dart';
 
 class LoginPage extends StatefulWidget {
@@ -16,23 +16,6 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool _showPassword = false;
-
-  late final TextEditingController _emailController;
-  late final TextEditingController _passwordController;
-
-  @override
-  void initState() {
-    _emailController = TextEditingController();
-    _passwordController = TextEditingController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +40,6 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             children: <Widget>[
               EmailPassword(
-                emailController: _emailController,
-                passwordController: _passwordController,
                 onPressed: () {
                   setState(() {
                     _showPassword = !_showPassword;
@@ -81,9 +62,7 @@ class _LoginPageState extends State<LoginPage> {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: ElevatedButton(
-            onPressed: () {
-              print(_emailController.text);
-            },
+            onPressed: () {},
             child: Text(AppLocalizations.of(context)!.loginBtn),
           ),
         ),
